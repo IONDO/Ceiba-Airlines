@@ -1,0 +1,42 @@
+[
+    {   "id": 1,
+        "fly_from": "Malabo",
+        "fly_to": "Annobon",
+        "fly_duration": "55m",
+        "fly_luggage": {
+            "hand_bag": [1],
+            "other_bags": [1, 2]
+        },
+        "fly_price_CFA": 30000,
+        "fly_price_EUR": 100,
+        "fly_price_USD": 120,
+        "fly_seats": {
+            "tourist_class": 40,
+            "first_class": 10
+        },
+        "departure-time": "08:30",
+        "arrival-time": "09:25",
+        "weekly-flights": ["Tuesday", "Thursday"]
+    },
+
+    {   "id": 2,
+        "fly_from": "Annobon",
+        "fly_to": "Malabo",
+        "fly_duration": "55m",
+        "fly_luggage": {
+            "hand_bag": [1],
+            "other_bags": [1, 2]
+        },
+        "fly_price_CFA": 30000,
+        "fly_price_EUR": 100,
+        "fly_price_USD": 120,
+        "fly_seats": {
+            "tourist_class": 40,
+            "first_class": 10
+        },
+        "departure-time": "08:30",
+        "arrival-time": "09:25",
+        "weekly-flights": ["Tuesday", "Thursday"]
+    }
+
+]
