@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 import 'bulma/css/bulma.css';
 import '../App.css';
 import '../FrontPage.css';
 import flights from '../data/flights'
 
-class Search extends Component {
+class FrontPage extends Component {
 
     state = {
         flights: flights,
@@ -78,6 +79,10 @@ class Search extends Component {
 
     }
 
+    handleClick = () => {
+        this.props.history.push("/search");
+    }
+
 
      
   render() {
@@ -130,7 +135,8 @@ class Search extends Component {
                     </div>       
                </div>
                <div className="level-item has-text-centered">
-                    <button className="button">Buscar</button>
+                        <button className="button" onClick={this.handleClick}
+                        type="button">Buscar</button>
                </div>
            </div>
         </div>
@@ -138,4 +144,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default FrontPage;
