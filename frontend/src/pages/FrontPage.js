@@ -76,8 +76,8 @@ class FrontPage extends Component {
         }
         return (
             <ul>
-                {originOptions.map((route) => 
-                    <li onClick={() => this.originSelected(route)} key={route.code}>{route.from.name}</li>)}
+                {originOptions.map((origin) => 
+                    <li onClick={() => this.originSelected(origin)} key={origin.code}>{origin.from.name}</li>)}
             </ul>
         )
 
@@ -146,6 +146,7 @@ class FrontPage extends Component {
                         <label className="highlited-text"><strong>Ida</strong></label>    
                         <DatePicker selected={this.state.departureDate}
                                onChange={this.handleDepartureChange}
+                               minDate={new Date()}
                                dateFormat="dd/MM/yyyy"
                                placeholderText="DD/MM/YYYY"/>
                     </div>
@@ -154,6 +155,7 @@ class FrontPage extends Component {
                         <label className="highlited-text"><strong>Vuelta</strong></label>    
                         <DatePicker selected={this.state.returnDate}
                                onChange={this.handleReturnChange}
+                               minDate={new Date()}
                                dateFormat="dd/MM/yyyy"
                                placeholderText="DD/MM/YYYY"/>
                     </div>

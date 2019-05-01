@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const moment = require('moment');
 const Flight = require('../models/flight');
 const Route = require('../models/route')
 
@@ -13,7 +14,12 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/search', (req, res, next) => {
-  Flight.find({})
+  const from = req.query.from || { $exists: true }
+  const to = req.query.to || { $exists: true }
+  const departWeekday = req.query.depart 
+    ? moment(req.query.depart, 'DD/MM/YYYY').format("dddd")
+    : { $exists: true }
+  Flight.find({ from_code: from, to_code: to, weekdays: departWeekday })
     .then(flights => {
       res.status(200).json({ flights })
     })
