@@ -22,12 +22,22 @@ class Auth {
       .then(({ data }) => data);
   }
 
+  update(user) {
+    return this.auth
+      .post("/auth/profile", user)
+      .then(({ data }) => data);
+  }
+
   logout() {
-    return this.auth.post("/auth/logout", {}).then(response => response.data);
+    return this.auth
+      .post("/auth/logout", {})
+      .then(response => response.data);
   }
 
   me() {
-    return this.auth.get("/auth/me").then(response => response.data);
+    return this.auth
+      .get("/auth/me")
+      .then(response => response.data);
   }
 }
 

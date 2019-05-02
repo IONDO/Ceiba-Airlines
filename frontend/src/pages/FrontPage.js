@@ -77,7 +77,7 @@ class FrontPage extends Component {
         return (
             <ul>
                 {originOptions.map((origin) => 
-                    <li onClick={() => this.originSelected(origin)} key={origin.code}>{origin.from.name}</li>)}
+                    <li onClick={() => this.originSelected(origin)} key={origin._id}>{origin.from.name}</li>)}
             </ul>
         )
 
@@ -92,7 +92,7 @@ class FrontPage extends Component {
         return (
             <ul>
                 {destinationOptions.map((destination) => 
-                    <li onClick={() => this.destinationSelected(destination) } key={destination.code}>{destination.name}</li>)}
+                    <li onClick={() => this.destinationSelected(destination) } key={destination._id}>{destination.name}</li>)}
             </ul>
         )
 

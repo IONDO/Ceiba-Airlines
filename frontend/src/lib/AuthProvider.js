@@ -14,6 +14,7 @@ export const withAuth = Comp => {
               <Comp
                 login={authStore.login}
                 signup={authStore.signup}
+                update={authStore.update}
                 user={authStore.user}
                 logout={authStore.logout}
                 isLoggedin={authStore.isLoggedin}
@@ -83,6 +84,19 @@ class AuthProvider extends Component {
       .catch(() => {});
   };
 
+  update = user => {
+    const { username } = user;
+    return auth
+      .update({ username })
+      .then(user => {
+        this.setState({
+          isLoggedin: true,
+          user
+        });
+      })
+      .catch(() => {});
+  };
+
   logout = () => {
     auth
       .logout()
@@ -105,7 +119,8 @@ class AuthProvider extends Component {
           user,
           login: this.login,
           logout: this.logout,
-          signup: this.signup
+          signup: this.signup,
+          update: this.update
         }}
       >
         {this.props.children}

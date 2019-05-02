@@ -12,6 +12,7 @@ import AuthProvider from "./lib/AuthProvider";
 
 import FrontPage from "./pages/FrontPage"
 import Search from "./pages/Search"
+import Profile from "./pages/Profile"
 
 import './App.css';
 
@@ -20,13 +21,13 @@ class App extends Component {
     return (
       <AuthProvider>
         <div className="App">
-          <h1>Basic React Authentication</h1>
           <Navbar />
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
             <PrivateRoute exact path="/" component={FrontPage} />
-            <PrivateRoute path="/search/"  component={Search} />
+            <PrivateRoute path="/search" component={Search} />
+            <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/private" component={Private} />
           </Switch>
         </div>

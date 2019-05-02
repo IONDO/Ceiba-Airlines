@@ -13,6 +13,7 @@ const {
 } = require('../helpers/middlewares');
 
 router.get('/me', isLoggedIn(), (req, res, next) => {
+  console.log(req.session)
   res.json(req.session.currentUser);
 });
 
@@ -21,12 +22,16 @@ router.post(
   isNotLoggedIn(),
   validationLoggin(),
   async (req, res, next) => {
-    const { username, password } = req.body;
+    const {
+      username,
+      password
+    } = req.body;
     try {
       const user = await User.findOne({ username });
       if (!user) {
         next(createError(404));
       } else if (bcrypt.compareSync(password, user.password)) {
+        user.password = undefined;
         req.session.currentUser = user;
         return res.status(200).json(user);
       } else {
@@ -43,16 +48,27 @@ router.post(
   isNotLoggedIn(),
   validationLoggin(),
   async (req, res, next) => {
-    const { username, password } = req.body;
+    const {
+      fullname,
+      username,
+      password
+    } = req.body;
 
     try {
-      const user = await User.findOne({ username }, 'username');
+      const user = await User.findOne({
+        username
+      }, 'username');
       if (user) {
         return next(createError(422));
       } else {
         const salt = bcrypt.genSaltSync(10);
         const hashPass = bcrypt.hashSync(password, salt);
-        const newUser = await User.create({ username, password: hashPass });
+        const newUser = await User.create({
+          fullname,
+          username,
+          password: hashPass
+        });
+        newUser.password = undefined;
         req.session.currentUser = newUser;
         res.status(200).json(newUser);
       }
@@ -72,5 +88,30 @@ router.get('/private', isLoggedIn(), (req, res, next) => {
     message: 'This is a private message',
   });
 });
+
+router.get('/profile', isLoggedIn(), (req, res, next) => {
+  const {
+    id
+  } = req.session.currentUser._id;
+  console.log(id)
+  res.json(req.session.currentUser);
+});
+
+router.post('/profile', async (req, res, next) => {
+  const {
+    _id
+  } = req.session.currentUser;
+  const {
+    username
+  } = req.body;
+  const user = await User.findByIdAndUpdate(_id, {
+      username
+    }, {
+      new: true
+    })
+    .select("-password")
+  res.status(200).json(user);
+});
+
 
 module.exports = router;

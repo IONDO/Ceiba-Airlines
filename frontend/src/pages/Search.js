@@ -40,10 +40,11 @@ class Search extends Component {
 		
         return (
             <div> 
-                <section>
+                <div>
 					<h3 className="direction">Ida</h3>
 					<ul>
-						{this.state.outboundFlights.map(outbound =>
+						{(this.state.outboundFlights.length > 0)
+							? this.state.outboundFlights.map(outbound =>
 							<li key={outbound._id}> 
 								<div className="card">
 									<div className="card-header">Ceiba Airlines</div>
@@ -52,6 +53,8 @@ class Search extends Component {
 										<span>{outbound.from}</span>
 										<p>Departure time</p>
 										<span>{outbound.departure_time}</span>
+										<p>Departure date</p>
+										<span>{this.params.depart}</span>
 										<p>Duration</p>
 										<span>{outbound.duration}</span>
 										<p>To</p>
@@ -61,17 +64,20 @@ class Search extends Component {
 										<br/>
 										<input type="button"
 											   value="Select"
+											   onClick={this.handleClick}
 										/>
 									</div>
 								</div>
-							</li>
-						)}
+							</li>)
+							: <span>Sorry, there are no available flights for this date</span>
+						}
 					</ul>
-				</section>
-				<section>
+				</div>
+				<div>
 					<h3 className="direction">Vuelta</h3>
 					<ul>
-						{this.state.inboundFlights.map(inbound =>
+						{(this.state.inboundFlights.length > 0) 
+							? this.state.inboundFlights.map(inbound =>
 							<li key={inbound._id}> 
 								<div className="card">
 									<div className="card-header">Ceiba Airlines</div>
@@ -80,6 +86,8 @@ class Search extends Component {
 										<span>{inbound.from}</span>
 										<p>Departure time</p>
 										<span>{inbound.departure_time}</span>
+										<p>Return date</p>
+										<span>{this.params["return"]}</span>
 										<p>Duration</p>
 										<span>{inbound.duration}</span>
 										<p>To</p>
@@ -87,13 +95,16 @@ class Search extends Component {
 										<p>Arriving time</p>
 										<span>{inbound.arrival_time}</span>
 										<br/>
-										<input type="button" value="Select"/>
+										<input type="button" 
+											   value="Select"
+											   onClick={this.handleClick}/>
 									</div>
 								</div>
-							</li>
-						)}
+							</li>)
+							: <span>Sorry, there are no available flights for this date</span>
+						}
 					</ul>
-				</section>
+				</div>
 				<div>
 					<Link to={"/"}>Back</Link>
 				</div>
