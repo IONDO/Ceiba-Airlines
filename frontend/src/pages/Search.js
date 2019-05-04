@@ -15,19 +15,19 @@ class Search extends Component {
 			outboundFlights: [],
 			inboundFlights: [],
 			selectedOutbound: undefined,
-			selectedInbound: undefined,
+			selectedInbound: undefined
 		}
 	}
 
 	componentDidMount() {
-		fetch(`http://localhost:5000/api/search?from=${this.params.from}&to=${this.params.to}&depart=${this.params.depart}`)
+		fetch(`${process.env.REACT_APP_BACKEND_URL}/api/search?from=${this.params.from}&to=${this.params.to}&depart=${this.params.depart}`)
             .then(response => response.json())
             .then(({ flights }) => this.setState({ outboundFlights: flights }))
             .catch(error => {
                 console.log("error", error);
                 this.setState({ status: "error" });
             });
-		fetch(`http://localhost:5000/api/search?from=${this.params.to}&to=${this.params.from}&depart=${this.params["return"]}`)
+		fetch(`${process.env.REACT_APP_BACKEND_URL}/api/search?from=${this.params.to}&to=${this.params.from}&depart=${this.params["return"]}`)
             .then(response => response.json())
             .then(({ flights }) => this.setState({ inboundFlights: flights }))
             .catch(error => {
@@ -47,15 +47,14 @@ class Search extends Component {
     render () {
         return (
             <div>
-				<div className="search"> 
-                	<div>
-						<h3 className="direction">Ida</h3>
+				<div className="search">
+					<div className="section">
+                	<div className="card child">
 						<ul>
 							{(this.state.outboundFlights.length > 0)
 								? this.state.outboundFlights.map(outbound =>
 								<li key={outbound._id}> 
-									<div className="card">
-										<div className="card-header">Ceiba Airlines</div>
+										<div className="card-header">Ida</div>
 										<div className="card-body">
 											<p>From</p>
 											<span>{outbound.from}</span>
@@ -77,20 +76,19 @@ class Search extends Component {
 												   onClick={() => this.handleSelectOutbound(outbound)}
 											/>
 										</div>
-									</div>
+									
 								</li>)
 								: <span>Sorry, there are no available flights for this date</span>
 							}
 						</ul>
 					</div>
-					<div>
-						<h3 className="direction">Vuelta</h3>
+					<div className="card child">
 						<ul>
 							{(this.state.inboundFlights.length > 0) 
 								? this.state.inboundFlights.map(inbound =>
 								<li key={inbound._id}> 
-									<div className="card">
-										<div className="card-header">Ceiba Airlines</div>
+									
+										<div className="card-header">Vuelta</div>
 										<div className="card-body">
 											<p>From</p>
 											<span>{inbound.from}</span>
@@ -111,38 +109,69 @@ class Search extends Component {
 												   value="Select"
 												   onClick={() => this.handleSelectInbound(inbound)}/>
 										</div>
-									</div>
+							
 								</li>)
 								: <span>Sorry, there are no available flights for this date</span>
 							}
 						</ul>
 					</div>
+					</div> 
+				{(this.state.outboundFlights > 0) ?
 					<div className="card">
 						<div className="card-header">Total Price</div>
 						<div className="card-body">
-							<h3>Ida</h3>
-							<p>From</p>
-							<p>Departure time</p>
-							<p>To</p>
-							<p>Arriving time</p>
-							<p>Duration</p>
-							<p>Price</p>
+							{this.state.selectedOutbound ? 
+								<>
+								<h3>Ida</h3>
+								<p>From</p>
+								{this.state.selectedOutbound.from}
+								<p>Departure time</p>
+								{this.state.selectedOutbound.departure_time}
+								<p>To</p>
+								{this.state.selectedOutbound.to}
+								<p>Arriving time</p>
+								{this.state.selectedOutbound.arrival_time}
+								<p>Duration</p>
+								{this.state.selectedOutbound.duration}
+								<p>Price</p>
+								{this.state.selectedOutbound.price}
+								</> : 
+								<span>Select a flight</span>
+							}
 							<hr/>
-							<h3>Vuelta</h3>
-							<p>From</p>
-							<p>Departure time</p>
-							<p>To</p>
-							<p>Arriving time</p>
-							<p>Duration</p>
-							<p>Price</p>
-							<hr/>
+							{this.state.selectedInbound ?
+								<>
+								<h3>Vuelta</h3>
+								<p>From</p>
+								{this.state.selectedInbound.from}
+								<p>Departure time</p>
+								{this.state.selectedInbound.departure_time}
+								<p>To</p>
+								{this.state.selectedInbound.to}
+								<p>Arriving time</p>
+								{this.state.selectedInbound.arrival_time}
+								<p>Duration</p>
+								{this.state.selectedInbound.duration}
+								<p>Price</p>
+								{this.state.selectedInbound.price}
+								<hr/>
+								</> :
+								<span></span>
+							}
 							<br/>
-							<input type="button" 
-								value="Save"
-								onClick={this.handleSave}/>
+							{this.state.selectedOutbound ?
+								<>
+								<input type="button" 
+									value="Save"
+									onClick={this.handleSave}/>
+								</> : 
+								<span></span>
+							}
+						</div> 
 						</div>
-						</div>
-					</div>
+						: <span></span>
+					}
+					</div> 
 				<div>
 					<Link to={"/"}>Back</Link>
 				</div>

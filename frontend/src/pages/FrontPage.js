@@ -21,7 +21,7 @@ class FrontPage extends Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:5000/api/")
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/`)
             .then(response => response.json())
             .then(({ routes }) => this.setState({ routes }))
             .catch(error => {

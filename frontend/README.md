@@ -1,120 +1,95 @@
-# Project Name
-
+# Ceiba-Airlines
 ## Description
 
-Describe your project in one/two lines.
-
+Ceiba-Airlines is a reservation web aplication that will allow you to buy your tickets whenever you chose to travel with Ceiba, the Equatorial Guinee's airline company.
+ 
 ## User Stories
 
--  **404:** As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault
--  **Signup:** As an anon I can sign up in the platform so that I can start saving favorite restaurants
--  **Login:** As a user I can login to the platform so that I can see my favorite restaurants
--  **Logout:** As a user I can logout from the platform so no one else can use it
--  **Add Restaurants** As a user I can add a restaurant so that I can share it with the community
--  **List Restaurants** As a user I want to see the restaurants so that I can choose one to eat
--  **Search Restaurants** As a user I want to search restaurants by name so that I know if it´s already in the platform
--  **Add to favorites** As a user I want to add a restaurant to favorite so that I can save the restaurants that I liked the most
--  **See my favorites** As a user I want to see my favorite restaurantes so that I can see the ones I liked the most
+- **Homepage**  - The user will be able to access the homepage to search for flights as well as to login and signup. 
+
+
+- **Sign up** - The user will be able to sign up on the webpage so that they can enjoy the benefits of being the airlines customer.
+
+- **Login** - The user will be able to login on the webpage and have access to all the services he has with the airlines.
+
+- **Logout** - The user will be able to log out from the webpage to guarantee only him has access his account.
+
+- **Flights** - The user will be able to see the history of flights his acounts(where he has been to, where he is going to and recomendations).
+
+- **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault 
+
+- **500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault. 
 
 ## Backlog
 
-User profile:
-- see my profile
-- upload my profile picture
-- see other users profile
-- list of events created by the user
-- list events the user is attending
+Flight booking confirmation
+- When an user buy a flight he will receive and email confirming the reserve and the flight details.
 
-Geo Location:
-- add geolocation to events when creating
-- show event in a map in event detail page
-- show all events in a map in the event list page
+First vs Turist class
+- A user will pay different prices depending on the seats he wants to occupy in the airplain.
+- First class seats will be more confortable and will include extra services, however, these extra services will make the price expensive.
+- Turist class seats will not have the extra services the first class seats have, therefore the price will be more economic.
+
+Price setting
+- Set prices depending on when the user is making the booking. The sooner he buys the flight the cheeper it will be.
+
+Flight extras
+- The user will be able to add extra luggage if needed
+- The user will be able to select a seat.
 
 Homepage:
 - ...
-  
-# Client
 
-## Pages
+## Routes
 
-| url | public | Functionality |
-|-----|-------|---------------|
-| `/` | true | landing page |
-| `/signup` | true | Signup user |
-| `/login` | true | login user |
-| `/profile` | false | profile of user |
+| Method      | Description | Test Text     |
+| :---        |    :----:   |          :---:|
+| GET         | /           | Renders the homepage   |
+| GET         | /signup| Renders the singup page   |
+| POST        | /signup| Redirects to homepage|
+| GET         | /login| Renders the login page   |
+| POST        | /login| Redirects to homepage|
+| GET         | /from - to| Renders the list of flights available on the dates selected by the user   |
+| POST        | /from - to| Redirects to /payment|
+| GET         | /payment| Renders the payment page   |
+| POST        | /from - to| Redirects to /user|
+| GET         | /user| Renders the user's flights history |
+| GET         | /user/:flightId| Renders the itinerary of the selected flight|
 
-## Services
+## Components
 
-- Auth Service
-  - auth.login(user)
-  - auth.signup(user)
-  - auth.logout()
-  - auth.me()
-  - auth.getUser() // synchronous
-- Restaurant Service
-  - restaurant.list()
-  - restaurant.search(terms)
-  - restaurant.create(data)
-  - restaurant.detail(id)
-  - restaurant.addFavorite(id)
-  - restaurant.removeFavorite(id)   
-
-# Server
+- Home component
+- User component
+- Flight component(backlog)
+- Signup component
+- Login component
 
 ## Models
 
 User model
 
 ```
-username - String // required
-email - String // required & unique
-password - String // required
-favorites - [ObjectID<Restaurant>]
-```
-
-Restaurant model
-
-```
-owner - ObjectID<User> // required
-name - String // required
+email - { type: String, required: true }
+password - { type: String, required: true }
+name - String
+surname - String
 phone - String
 address - String
+city - String
+country - String
 ```
-
-## API Endpoints (backend routes)
-
-## API routes:
-
-### auth
-|Method|Route|Functionality|
-|---|---|---|
-|GET|api/auth/me|Check session status|
-|POST|api/auth/signup|Log in user to app and set user to session (Body: username, password)|
-|POST|api/auth/login|Register user to app and set user to session (Body: username, password)|
-|POST|api/auth/logout|Log out user from app and remove session|
-  
-
 ## Links
 
-### Trello/Kanban
+### Trello
 
-[Link to your trello board](https://trello.com) or picture of your physical board
+[Trello board](https://trello.com/b/FkdA3atS/ceiba-airlines) 
 
 ### Git
 
-The url to your repository and to your deployed project
+[Repository Link](https://github.com/IONDO/Ceiba-Airlines)
 
-[Client repository Link](https://github.com/Ironhack-PartTime-BCN/boilerplate-frontend-module-3)
-
-[Server repository Link](https://github.com/Ironhack-PartTime-BCN/boilerplate-backend-module-3)
-
-[Deploy Link Backend](http://heroku.com)
-
-[Deploy Link Frontend]()
+[Deploy Link]()
 
 ### Slides
 
-The url to your presentation slides
-
-[Slides Link](http://slides.com)
+[Slides Link]()

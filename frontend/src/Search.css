@@ -1,7 +1,7 @@
 .search {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly
+    justify-content: space-between;
 }
 
 .card {
@@ -40,7 +40,13 @@
 }
 
 .section {
-    width: 50%
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.child {
+    width: 100%
 }
 
 hr {
