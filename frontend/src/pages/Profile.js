@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { withAuth } from "../lib/AuthProvider";
 import 'bulma/css/bulma.css';
 import '../App.css';
@@ -6,13 +7,14 @@ import '../App.css';
 class Profile extends Component {
 
     state = {
+      fullname: this.props.user.fullname,
       username: this.props.user.username,
     };
 
     handleFormSubmit = event => {
       event.preventDefault();
-      const { username } = this.state;
-      this.props.update({ username });
+      const { fullname, username } = this.state;
+      this.props.update({ fullname, username });
     };
 
     handleChange = event => {
@@ -21,11 +23,20 @@ class Profile extends Component {
     };
      
     render() {
-        const { username } = this.state;
+        const { fullname,username } = this.state;
         return (
             <div className="App">
-                <h3>{this.props.user.username} update your profile</h3>
+                <h3>{this.props.user.fullname} update your profile</h3>
                 <form onSubmit={this.handleFormSubmit}>
+                  <label>Fullname:</label>
+                    <input
+                      type="text"
+                      name="fullname"
+                      value={fullname}
+                      onChange={this.handleChange}
+                      placeholder="testing@test.com"
+                    />
+                    <input type="submit" value="Update" />
                     <label>Username:</label>
                     <input
                       type="text"
@@ -36,6 +47,9 @@ class Profile extends Component {
                     />
                     <input type="submit" value="Update" />
                 </form>
+                <div>
+					        <Link to={"/"}>Search</Link>
+				        </div>
             </div>
         );
     }

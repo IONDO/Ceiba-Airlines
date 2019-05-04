@@ -55,9 +55,9 @@ class AuthProvider extends Component {
   }
 
   signup = user => {
-    const { username, password } = user;
+    const { fullname, username, password } = user;
     auth
-      .signup({ username, password })
+      .signup({ fullname, username, password })
       .then(user => {
         this.setState({
           isLoggedin: true,
@@ -85,9 +85,9 @@ class AuthProvider extends Component {
   };
 
   update = user => {
-    const { username } = user;
+    const { fullname,username } = user;
     return auth
-      .update({ username })
+      .update({ fullname, username })
       .then(user => {
         this.setState({
           isLoggedin: true,

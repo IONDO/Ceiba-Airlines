@@ -9,7 +9,7 @@ class Navbar extends Component {
       <div>
         {isLoggedin ? (
           <>
-            <p>Welcome {user.username}</p>
+            <p>Welcome {user.fullname}</p>
             <Link to="/profile">Profile</Link>
             <Link to="/mytrips">My trips</Link>
             <Link to="logout">

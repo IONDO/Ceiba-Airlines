@@ -36,75 +36,113 @@ class Search extends Component {
             });
 	}
 
+	handleSelectOutbound(selectedOutbound) {
+		this.setState({ selectedOutbound });
+	}
+
+	handleSelectInbound(selectedInbound) {
+		this.setState({ selectedInbound });
+	}
+
     render () {
-		
         return (
-            <div> 
-                <div>
-					<h3 className="direction">Ida</h3>
-					<ul>
-						{(this.state.outboundFlights.length > 0)
-							? this.state.outboundFlights.map(outbound =>
-							<li key={outbound._id}> 
-								<div className="card">
-									<div className="card-header">Ceiba Airlines</div>
-									<div className="card-body">
-										<p>From</p>
-										<span>{outbound.from}</span>
-										<p>Departure time</p>
-										<span>{outbound.departure_time}</span>
-										<p>Departure date</p>
-										<span>{this.params.depart}</span>
-										<p>Duration</p>
-										<span>{outbound.duration}</span>
-										<p>To</p>
-										<span>{outbound.to}</span>
-										<p>Arriving time</p>
-										<span>{outbound.arrival_time}</span>
-										<br/>
-										<input type="button"
-											   value="Select"
-											   onClick={this.handleClick}
-										/>
+            <div>
+				<div className="search"> 
+                	<div>
+						<h3 className="direction">Ida</h3>
+						<ul>
+							{(this.state.outboundFlights.length > 0)
+								? this.state.outboundFlights.map(outbound =>
+								<li key={outbound._id}> 
+									<div className="card">
+										<div className="card-header">Ceiba Airlines</div>
+										<div className="card-body">
+											<p>From</p>
+											<span>{outbound.from}</span>
+											<p>Departure time</p>
+											<span>{outbound.departure_time}</span>
+											<p>Departure date</p>
+											<span>{this.params.depart}</span>
+											<p>Duration</p>
+											<span>{outbound.duration}</span>
+											<p>To</p>
+											<span>{outbound.to}</span>
+											<p>Arriving time</p>
+											<span>{outbound.arrival_time}</span>
+											<p>Price</p>
+											<span>{outbound.price} CFAs</span>
+											<br/>
+											<input type="button"
+												   value="Select"
+												   onClick={() => this.handleSelectOutbound(outbound)}
+											/>
+										</div>
 									</div>
-								</div>
-							</li>)
-							: <span>Sorry, there are no available flights for this date</span>
-						}
-					</ul>
-				</div>
-				<div>
-					<h3 className="direction">Vuelta</h3>
-					<ul>
-						{(this.state.inboundFlights.length > 0) 
-							? this.state.inboundFlights.map(inbound =>
-							<li key={inbound._id}> 
-								<div className="card">
-									<div className="card-header">Ceiba Airlines</div>
-									<div className="card-body">
-										<p>From</p>
-										<span>{inbound.from}</span>
-										<p>Departure time</p>
-										<span>{inbound.departure_time}</span>
-										<p>Return date</p>
-										<span>{this.params["return"]}</span>
-										<p>Duration</p>
-										<span>{inbound.duration}</span>
-										<p>To</p>
-										<span>{inbound.to}</span>
-										<p>Arriving time</p>
-										<span>{inbound.arrival_time}</span>
-										<br/>
-										<input type="button" 
-											   value="Select"
-											   onClick={this.handleClick}/>
+								</li>)
+								: <span>Sorry, there are no available flights for this date</span>
+							}
+						</ul>
+					</div>
+					<div>
+						<h3 className="direction">Vuelta</h3>
+						<ul>
+							{(this.state.inboundFlights.length > 0) 
+								? this.state.inboundFlights.map(inbound =>
+								<li key={inbound._id}> 
+									<div className="card">
+										<div className="card-header">Ceiba Airlines</div>
+										<div className="card-body">
+											<p>From</p>
+											<span>{inbound.from}</span>
+											<p>Departure time</p>
+											<span>{inbound.departure_time}</span>
+											<p>Return date</p>
+											<span>{this.params["return"]}</span>
+											<p>Duration</p>
+											<span>{inbound.duration}</span>
+											<p>To</p>
+											<span>{inbound.to}</span>
+											<p>Arriving time</p>
+											<span>{inbound.arrival_time}</span>
+											<p>Price</p>
+											<span>{inbound.price} CFAs</span>
+											<br/>
+											<input type="button" 
+												   value="Select"
+												   onClick={() => this.handleSelectInbound(inbound)}/>
+										</div>
 									</div>
-								</div>
-							</li>)
-							: <span>Sorry, there are no available flights for this date</span>
-						}
-					</ul>
-				</div>
+								</li>)
+								: <span>Sorry, there are no available flights for this date</span>
+							}
+						</ul>
+					</div>
+					<div className="card">
+						<div className="card-header">Total Price</div>
+						<div className="card-body">
+							<h3>Ida</h3>
+							<p>From</p>
+							<p>Departure time</p>
+							<p>To</p>
+							<p>Arriving time</p>
+							<p>Duration</p>
+							<p>Price</p>
+							<hr/>
+							<h3>Vuelta</h3>
+							<p>From</p>
+							<p>Departure time</p>
+							<p>To</p>
+							<p>Arriving time</p>
+							<p>Duration</p>
+							<p>Price</p>
+							<hr/>
+							<br/>
+							<input type="button" 
+								value="Save"
+								onClick={this.handleSave}/>
+						</div>
+						</div>
+					</div>
 				<div>
 					<Link to={"/"}>Back</Link>
 				</div>
