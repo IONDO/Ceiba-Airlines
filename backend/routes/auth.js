@@ -13,7 +13,7 @@ const {
 } = require('../helpers/middlewares');
 
 router.get('/me', isLoggedIn(), (req, res, next) => {
-  console.log(req.session)
+
   res.json(req.session.currentUser);
 });
 
@@ -54,6 +54,8 @@ router.post(
       password
     } = req.body;
 
+    console.log(fullname)
+
     try {
       const user = await User.findOne({
         username
@@ -93,7 +95,6 @@ router.get('/profile', isLoggedIn(), (req, res, next) => {
   const {
     id
   } = req.session.currentUser._id;
-  console.log(id)
   res.json(req.session.currentUser);
 });
 
@@ -102,10 +103,11 @@ router.post('/profile', async (req, res, next) => {
     _id
   } = req.session.currentUser;
   const {
+    fullname,
     username
   } = req.body;
   const user = await User.findByIdAndUpdate(_id, {
-      username
+      fullname, username
     }, {
       new: true
     })
