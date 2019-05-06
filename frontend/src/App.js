@@ -13,6 +13,7 @@ import AuthProvider from "./lib/AuthProvider";
 import FrontPage from "./pages/FrontPage"
 import Search from "./pages/Search"
 import Profile from "./pages/Profile"
+import Trips from "./pages/Trips"
 
 import './App.css';
 
@@ -27,7 +28,9 @@ class App extends Component {
             <AnonRoute path="/login" component={Login} />
             <PrivateRoute exact path="/" component={FrontPage} />
             <PrivateRoute path="/search" component={Search} />
+            <PrivateRoute path="/mytrips" component={Trips} />
             <PrivateRoute path="/profile" component={Profile} />
+            
             <PrivateRoute path="/private" component={Private} />
           </Switch>
         </div>

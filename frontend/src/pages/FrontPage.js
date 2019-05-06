@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import 'bulma/css/bulma.css';
 import '../App.css';
 import '../FrontPage.css';
+import travel from '../lib/travel';
 
 class FrontPage extends Component {
 
@@ -21,9 +22,8 @@ class FrontPage extends Component {
     }
 
     componentDidMount() {
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/`)
-            .then(response => response.json())
-            .then(({ routes }) => this.setState({ routes }))
+        travel.routes()
+            .then(routes => this.setState({ routes }))
             .catch(error => {
                 console.log("error", error);
                 this.setState({ status: "error" });

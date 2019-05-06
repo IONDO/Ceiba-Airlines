@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 
-
 import 'bulma/css/bulma.css';
 import '../App.css';
 import '../Search.css';
+import travel from '../lib/travel';
 
 class Search extends Component {
 	constructor(props) {
@@ -15,21 +15,20 @@ class Search extends Component {
 			outboundFlights: [],
 			inboundFlights: [],
 			selectedOutbound: undefined,
-			selectedInbound: undefined
+			selectedInbound: undefined,
+			saving: false
 		}
 	}
 
 	componentDidMount() {
-		fetch(`${process.env.REACT_APP_BACKEND_URL}/api/search?from=${this.params.from}&to=${this.params.to}&depart=${this.params.depart}`)
-            .then(response => response.json())
-            .then(({ flights }) => this.setState({ outboundFlights: flights }))
-            .catch(error => {
-                console.log("error", error);
-                this.setState({ status: "error" });
-            });
-		fetch(`${process.env.REACT_APP_BACKEND_URL}/api/search?from=${this.params.to}&to=${this.params.from}&depart=${this.params["return"]}`)
-            .then(response => response.json())
-            .then(({ flights }) => this.setState({ inboundFlights: flights }))
+		travel.search(this.params.from, this.params.to, this.params.depart)
+			.then(outboundFlights => this.setState({ outboundFlights }))
+			.catch(error => {
+				console.log("error", error);
+				this.setState({ status: "error" });
+			});
+		travel.search(this.params.to, this.params.from, this.params["return"])
+            .then(inboundFlights => this.setState({ inboundFlights }))
             .catch(error => {
                 console.log("error", error);
                 this.setState({ status: "error" });
@@ -43,6 +42,18 @@ class Search extends Component {
 	handleSelectInbound(selectedInbound) {
 		this.setState({ selectedInbound });
 	}
+
+	save() {
+		const outbound = this.state.selectedOutbound._id;
+		const inbound = this.state.selectedInbound ? this.state.selectedInbound._id : undefined;
+		this.setState({ saving: true }, () => 
+			travel
+				.createTrip(outbound, inbound)
+				.then(tripId => {
+					this.props.history.push(`/mytrips/${tripId}`)
+				})
+		);
+    }
 
     render () {
         return (
@@ -116,7 +127,7 @@ class Search extends Component {
 						</ul>
 					</div>
 					</div> 
-				{(this.state.outboundFlights > 0) ?
+				{this.state.selectedOutbound ?
 					<div className="card">
 						<div className="card-header">Total Price</div>
 						<div className="card-body">
@@ -134,7 +145,7 @@ class Search extends Component {
 								<p>Duration</p>
 								{this.state.selectedOutbound.duration}
 								<p>Price</p>
-								{this.state.selectedOutbound.price}
+								<span>{this.state.selectedOutbound.price} CFAs</span>
 								</> : 
 								<span>Select a flight</span>
 							}
@@ -153,7 +164,7 @@ class Search extends Component {
 								<p>Duration</p>
 								{this.state.selectedInbound.duration}
 								<p>Price</p>
-								{this.state.selectedInbound.price}
+								<span>{this.state.selectedInbound.price} CFAs</span>
 								<hr/>
 								</> :
 								<span></span>
@@ -163,7 +174,8 @@ class Search extends Component {
 								<>
 								<input type="button" 
 									value="Save"
-									onClick={this.handleSave}/>
+									onClick={() => this.save()}
+									disabled={this.state.saving}/>
 								</> : 
 								<span></span>
 							}
