@@ -46,9 +46,11 @@ class Search extends Component {
 	save() {
 		const outbound = this.state.selectedOutbound._id;
 		const inbound = this.state.selectedInbound ? this.state.selectedInbound._id : undefined;
+		const departureDate = this.params.depart;
+		const returnDate= this.params["return"]
 		this.setState({ saving: true }, () => 
 			travel
-				.createTrip(outbound, inbound)
+				.createTrip(outbound, departureDate, inbound, returnDate)
 				.then(tripId => {
 					this.props.history.push(`/mytrips/${tripId}`)
 				})
