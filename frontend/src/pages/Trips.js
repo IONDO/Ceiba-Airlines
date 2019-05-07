@@ -54,7 +54,6 @@ class Trips extends Component {
 	}
 
 	compareInbound() {
-		console.log('cargando')
 		const userTrips = this.state.trips;
 		const availableFlights = this.state.flights;
 		const filteredInboundFlights = []
