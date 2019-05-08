@@ -25,49 +25,37 @@ class Trip extends Component {
             console.log("error", error);
             this.setState({ status: "error" });
         });
-  }
+	}
+	
+	renderFlight(title, flight) {
+		return <>
+			<div className="card-header">{title}</div>
+			<div className="card-body">
+				<p>From</p>
+				<span>{flight.from}</span>
+				<p>To</p>
+				<span>{flight.to}</span>
+				<p>Departure time</p>
+				<span>{flight.departure_time}</span>
+				<p>Duration</p>
+				<span>{flight.duration}</span>
+				<p>Arriving time</p>
+				<span>{flight.arrival_time}</span>
+				<p>Price</p>
+				<span>{flight.price} CFAs</span>
+				<br/>
+			</div>
+		</>;
+	}
 
   render() {
+		console.log(this.state.trip);
     return (
       <div>
-        {this.state.trip ? 
-        <>
-        <div className="card-header">Outbound</div>
-				<div className="card-body">
-					<p>From</p>
-					<span>{this.state.trip.outboundFlight.from}</span>
-          <p>To</p>
-					<span>{this.state.trip.outboundFlight.to}</span>
-					<p>Departure time</p>
-					<span>{this.state.trip.outboundFlight.departure_time}</span>
-					<p>Duration</p>
-					<span>{this.state.trip.outboundFlight.duration}</span>
-					<p>Arriving time</p>
-					<span>{this.state.trip.outboundFlight.arrival_time}</span>
-					<p>Price</p>
-					<span>{this.state.trip.outboundFlight.price} CFAs</span>
-					<br/>
-				</div>
-        <div className="card-header">Inbound</div>
-				<div className="card-body">
-					<p>From</p>
-					<span>{this.state.trip.inboundFlight.from}</span>
-          <p>To</p>
-					<span>{this.state.trip.inboundFlight.to}</span>
-					<p>Departure time</p>
-					<span>{this.state.trip.inboundFlight.departure_time}</span>
-					<p>Duration</p>
-					<span>{this.state.trip.inboundFlight.duration}</span>
-					<p>Arriving time</p>
-					<span>{this.state.trip.inboundFlight.arrival_time}</span>
-					<p>Price</p>
-					<span>{this.state.trip.inboundFlight.price} CFAs</span>
-					<br/>
-        </div>
-        </>
-        : <span></span>
-        }
-        {console.log(this.state.trip)}
+				{this.state.trip ? 
+					[this.renderFlight("Outbound",this.state.trip.outboundFlight), 
+					 (this.state.trip.inboundFlight) ? this.renderFlight("Outbound",this.state.trip.inboundFlight) : null]
+					: <span></span>}
       </div>
     );
   }

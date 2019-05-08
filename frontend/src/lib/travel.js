@@ -36,13 +36,13 @@ class Travel {
     }) => data.flights);
   }
 
-  createTrip(outboundFlightId, departureDate, inboundFlightId, returnDate) {
+  createTrip(outboundFlight, departureDate, inboundFlight, returnDate) {
     return this.client
       .post("/api/trips", {
         data: {
-          outboundFlightId,
+          outboundFlight,
           departureDate,
-          inboundFlightId,
+          inboundFlight,
           returnDate
         } 
       }).then(({
