@@ -23,7 +23,6 @@ class App extends Component {
     return (
       <AuthProvider>
         <div className="App">
-          <Navbar />
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
@@ -32,7 +31,6 @@ class App extends Component {
             <PrivateRoute path="/mytrips/:tripId" component={Trip} />
             <PrivateRoute path="/mytrips" component={Trips} />
             <PrivateRoute path="/profile" component={Profile} />
-            
             <PrivateRoute path="/private" component={Private} />
           </Switch>
         </div>

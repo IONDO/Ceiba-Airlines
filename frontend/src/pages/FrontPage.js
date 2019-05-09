@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 
 import DatePicker from "react-datepicker";
+import moment from "moment";
 
-import moment from "moment"
+import Navbar from "../components/Navbar";
+
 import "react-datepicker/dist/react-datepicker.css";
 import 'bulma/css/bulma.css';
 import '../App.css';
 import '../FrontPage.css';
+import '../css/style.css'
+
+
 import travel from '../lib/travel';
 
 class FrontPage extends Component {
@@ -112,77 +117,115 @@ class FrontPage extends Component {
      
   render() {
     return (
-        <div className="App">
-            {/* <div className="level">
-                <div className="level-left">
-                 <input type="checkbox" name="trip"/>Ida
-                 <input type="checkbox" name="trip"/>Vuelta
+        <div id="booking" className="section-container">
+            <Navbar />
+            <div className="section-center">
+            <div className="container">
+                <div className="row">
+                    <div className="booking-form">
+                        <div class="form-group">
+								<div class="form-checkbox">
+									<label for="roundtrip">
+										<input type="radio" id="roundtrip" name="flight-type"/>
+										<span></span>Roundtrip
+									</label>
+									<label for="one-way">
+										<input type="radio" id="one-way" name="flight-type"/>
+										<span></span>One way
+									</label>
+								</div>
+						</div>
+                        <div className="row">
+								<div className="col-md-6">
+									<div className="form-group">
+										<span className="form-label">Flying from</span>
+                                        <input className="form-control" type="text" 
+                                            value={this.state.originText} 
+                                            onChange={this.onSearchOriginChange}
+                                            placeholder="City or airport" 
+                                        />
+                                        {this.renderFlightOrigin()}
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Flyning to</span>
+                                        <input className="form-control" 
+                                            type="text" 
+                                            value={this.state.destinationText} 
+                                            onChange={this.onSearchDestinationChange}
+                                            placeholder="City or airport"
+                                            disabled={this.state.originOptions.length !== 1}/>
+                                        {this.renderFlightDestination()}
+									</div>
+								</div>
+						</div>
+                        <div className="row">
+								<div className="col-md-3">
+									<div className="form-group">
+										<span className="form-label">Departing</span>
+                                        <DatePicker className="form-control" 
+                                            selected={this.state.departureDate}
+                                            onChange={this.handleDepartureChange}
+                                            minDate={new Date()}
+                                            dateFormat="dd/mm/yyyy"
+                                            placeholderText="dd/mm/yyyy"
+                                        />
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">Returning</span>
+                                        <DatePicker className="form-control"
+                                            selected={this.state.returnDate}
+                                            onChange={this.handleReturnChange}
+                                            minDate={new Date()}
+                                            dateFormat="dd/mm/yyyy"
+                                            placeholderText="dd/mm/yyyy"
+                                        />
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="form-group">
+										<span class="form-label">Adults (18+)</span>
+										<select class="form-control">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+										</select>
+										<span class="select-arrow"></span>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="form-group">
+										<span class="form-label">Children (0-17)</span>
+										<select class="form-control">
+											<option>0</option>
+											<option>1</option>
+											<option>2</option>
+										</select>
+										<span class="select-arrow"></span>
+									</div>
+								</div>
+							</div>
+                            <div className="button-section">
+								<div className="form-btn">
+                                    <input className="submit-btn button" 
+                                        onClick={this.search}
+                                        type="button"
+                                        value="Show flights"
+                                        disabled={
+                                            this.state.originOptions.length !== 1 ||
+                                            this.state.destinationOptions.length !== 1 ||
+                                            !this.state.departureDate ||
+                                            !this.state.returnDate
+                                        }
+                                    />
+								</div>
+							</div>
+                        </div>
+                    </div>
                 </div>
-            </div> */}
-            <div className="level">
-               <div className="level-item has-text-centered">
-                    <div>
-                        <label className="highlited-text"><strong>Origen</strong></label>
-                        <input className="input destiny-box" type="text" value={this.state.originText} onChange={this.onSearchOriginChange}
-                        placeholder="Origen" 
-                        />
-                        {this.renderFlightOrigin()}
-                    </div>
-                    <div>
-                        <label className="highlited-text"><strong>Destino</strong></label>
-                        <input className="input destiny-box" 
-                               type="text" 
-                               value={this.state.destinationText} 
-                               onChange={this.onSearchDestinationChange}
-                               placeholder="Destino"
-                               disabled={this.state.originOptions.length !== 1}/>
-                        {this.renderFlightDestination()}
-                    </div>
-                    <br></br>
-
-               </div>
-               <div className="level-item has-text-centered">
-                    <div>
-                        <label className="highlited-text"><strong>Ida</strong></label>    
-                        <DatePicker selected={this.state.departureDate}
-                               onChange={this.handleDepartureChange}
-                               minDate={new Date()}
-                               dateFormat="dd/MM/yyyy"
-                               placeholderText="DD/MM/YYYY"/>
-                    </div>
-                    
-                    <div>
-                        <label className="highlited-text"><strong>Vuelta</strong></label>    
-                        <DatePicker selected={this.state.returnDate}
-                               onChange={this.handleReturnChange}
-                               minDate={new Date()}
-                               dateFormat="dd/MM/yyyy"
-                               placeholderText="DD/MM/YYYY"/>
-                    </div>
-               </div>
-{/*                <div className="level-item has-text-centered">
-                    
-                    <div className="select is-rounded">
-                        <select>
-                          <option>Pasajeros</option>
-                          <option>Adulto</option>
-                          <option>Niño</option>
-                          <option>Bebe</option>
-                        </select>
-                    </div>       
-               </div> */}
-               <div className="level-item has-text-centered">
-                    <input className="button" 
-                            onClick={this.search}
-                            type="button"
-                            value="Buscar"
-                            disabled={
-                                this.state.originOptions.length !== 1 ||
-                                this.state.destinationOptions.length !== 1 ||
-                                !this.state.departureDate ||
-                                !this.state.returnDate
-                            }/>
-               </div>
            </div>
         </div>
     );

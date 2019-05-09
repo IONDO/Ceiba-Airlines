@@ -1,12 +1,16 @@
-.section {
+.section-container {
 	position: relative;
 	height: 100vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 }
 
-.section .section-center {
+.section-container .section-center {
 	position: absolute;
 	top: 50%;
-	left: 0;
+	left: 400px;
 	right: 0;
 	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
@@ -171,4 +175,13 @@
 .booking-form .submit-btn:hover,
 .booking-form .submit-btn:focus {
 	opacity: 0.9;
+}
+
+.button-section {
+	position: relative;
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	flex: 0 0 83.333%;
+	max-width: 99.333%;
 }
