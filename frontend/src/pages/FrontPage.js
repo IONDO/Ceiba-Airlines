@@ -84,8 +84,8 @@ class FrontPage extends Component {
                 {originOptions.map((origin) => 
                     <li onClick={() => this.originSelected(origin)} key={origin._id}>{origin.from.name}</li>)}
             </ul>
+           
         )
-
     }
 
     renderFlightDestination () {
@@ -100,7 +100,6 @@ class FrontPage extends Component {
                     <li onClick={() => this.destinationSelected(destination) } key={destination._id}>{destination.name}</li>)}
             </ul>
         )
-
     }
 
     formatDate(date) {
@@ -123,13 +122,13 @@ class FrontPage extends Component {
             <div className="container">
                 <div className="row">
                     <div className="booking-form">
-                        <div class="form-group">
-								<div class="form-checkbox">
-									<label for="roundtrip">
+                        <div className="form-group">
+								<div className="form-checkbox">
+									<label id="roundtrip">
 										<input type="radio" id="roundtrip" name="flight-type"/>
 										<span></span>Roundtrip
 									</label>
-									<label for="one-way">
+									<label id="one-way">
 										<input type="radio" id="one-way" name="flight-type"/>
 										<span></span>One way
 									</label>
@@ -147,9 +146,9 @@ class FrontPage extends Component {
                                         {this.renderFlightOrigin()}
 									</div>
 								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label">Flyning to</span>
+								<div className="col-md-6">
+									<div className="form-group">
+										<span className="form-label">Flyning to</span>
                                         <input className="form-control" 
                                             type="text" 
                                             value={this.state.destinationText} 
@@ -173,9 +172,9 @@ class FrontPage extends Component {
                                         />
 									</div>
 								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										<span class="form-label">Returning</span>
+								<div className="col-md-3">
+									<div className="form-group">
+										<span className="form-label">Returning</span>
                                         <DatePicker className="form-control"
                                             selected={this.state.returnDate}
                                             onChange={this.handleReturnChange}
@@ -185,26 +184,26 @@ class FrontPage extends Component {
                                         />
 									</div>
 								</div>
-								<div class="col-md-2">
-									<div class="form-group">
-										<span class="form-label">Adults (18+)</span>
-										<select class="form-control">
+								<div className="col-md-2">
+									<div className="form-group">
+										<span className="form-label">Adults (18+)</span>
+										<select className="form-control">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
 										</select>
-										<span class="select-arrow"></span>
+										<span className="select-arrow"></span>
 									</div>
 								</div>
-								<div class="col-md-2">
-									<div class="form-group">
-										<span class="form-label">Children (0-17)</span>
-										<select class="form-control">
+								<div className="col-md-2">
+									<div className="form-group">
+										<span className="form-label">Children (0-17)</span>
+										<select className="form-control">
 											<option>0</option>
 											<option>1</option>
 											<option>2</option>
 										</select>
-										<span class="select-arrow"></span>
+										<span className="select-arrow"></span>
 									</div>
 								</div>
 							</div>

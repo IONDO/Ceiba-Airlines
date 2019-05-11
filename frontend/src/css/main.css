@@ -116,10 +116,10 @@ textarea:-moz-placeholder { color: #555555;}
 textarea::-moz-placeholder { color: #555555;}
 textarea:-ms-input-placeholder { color: #555555;}
 
-label {
+/* label {
   display: block;
   margin: 0;
-}
+} */
 
 /*---------------------------------------------*/
 button {

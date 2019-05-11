@@ -12,7 +12,7 @@ class Navbar extends Component {
             <p>Welcome {user.fullname}</p>
             <Link to="/profile">Profile</Link>
             <Link to="/mytrips">My trips</Link>
-            <Link to="logout">
+            <Link to="/login">
               <input type="button" value="Logout" onClick={logout}/>
             </Link>
           </>

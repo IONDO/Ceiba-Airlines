@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Switch } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
 import Private from "./pages/Private";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -17,6 +16,7 @@ import Trip from "./pages/Trip"
 import Trips from "./pages/Trips"
 
 import './App.css';
+
 
 class App extends Component {
   render() {

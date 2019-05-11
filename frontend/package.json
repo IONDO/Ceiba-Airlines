@@ -9,6 +9,7 @@
     "bulma": "^0.7.4",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
+    "normalize.css": "^8.0.1",
     "popper.js": "^1.15.0",
     "query-string": "^6.5.0",
     "react": "^16.5.2",
