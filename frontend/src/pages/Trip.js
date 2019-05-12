@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 
+import Navbar from "../components/Navbar";
+
 import 'bulma/css/bulma.css';
 import '../App.css';
 import '../Search.css';
@@ -30,6 +32,7 @@ class Trip extends Component {
 	renderFlight(title, flight) {
 		return <>
 			<div className="search-container trip">
+				<Navbar />
 				<div className="search">
 					<div className="section booking-results">
 						<div className="card child">
@@ -82,6 +85,7 @@ class Trip extends Component {
 		console.log(this.state.trip);
     return (
       <div>
+				
 				{this.state.trip ? 
 					[this.renderFlight("Outbound",this.state.trip.outboundFlight), 
 					 (this.state.trip.inboundFlight) ? this.renderFlight("Inbound",this.state.trip.inboundFlight) : null]

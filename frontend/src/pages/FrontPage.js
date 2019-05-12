@@ -7,11 +7,10 @@ import Navbar from "../components/Navbar";
 
 import "react-datepicker/dist/react-datepicker.css";
 import 'bulma/css/bulma.css';
-import '../App.css';
 import '../FrontPage.css';
 import '../css/style.css'
 
-
+import { withAuth } from "../lib/AuthProvider";
 import travel from '../lib/travel';
 
 class FrontPage extends Component {
@@ -80,11 +79,12 @@ class FrontPage extends Component {
             return null;
         }
         return (
-            <ul>
-                {originOptions.map((origin) => 
-                    <li onClick={() => this.originSelected(origin)} key={origin._id}>{origin.from.name}</li>)}
-            </ul>
-           
+            <div className="suggestions">
+                <ul>
+                    {originOptions.map((origin) => 
+                        <li onClick={() => this.originSelected(origin)} key={origin._id}>{origin.from.name}</li>)}
+                </ul>
+            </div>
         )
     }
 
@@ -95,10 +95,12 @@ class FrontPage extends Component {
             return null;
         }
         return (
-            <ul>
-                {destinationOptions.map((destination) => 
-                    <li onClick={() => this.destinationSelected(destination) } key={destination._id}>{destination.name}</li>)}
-            </ul>
+            <div className="suggestions">
+                <ul>
+                    {destinationOptions.map((destination) => 
+                        <li onClick={() => this.destinationSelected(destination) } key={destination._id}>{destination.name}</li>)}
+                </ul>
+            </div>
         )
     }
 
@@ -115,12 +117,14 @@ class FrontPage extends Component {
     handleReturnChange = (returnDate) => this.setState({ returnDate })
      
   render() {
+    const { user} = this.props;
     return (
-        <div id="booking" className="section-container">
-            <Navbar />
+        <div className="frontpage">
+            <div className="frontpage-container">
+            <h1 className="user-message">Welcome {user.fullname}</h1>
             <div className="section-center">
             <div className="container">
-                <div className="row">
+                <div className="frontpage-search-box">
                     <div className="booking-form">
                         <div className="form-group">
 								<div className="form-checkbox">
@@ -226,9 +230,13 @@ class FrontPage extends Component {
                     </div>
                 </div>
            </div>
+           <div className="fixed-top-navbar">
+            <Navbar />
+           </div>
+           </div>
         </div>
     );
   }
 }
 
-export default FrontPage;
+export default withAuth(FrontPage);

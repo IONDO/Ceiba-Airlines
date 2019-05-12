@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 
+import Navbar from "../components/Navbar";
+
 import 'bulma/css/bulma.css';
 import '../App.css';
 import '../Search.css';
@@ -60,6 +62,7 @@ class Search extends Component {
     render () {
         return (
             <div className="search-container">
+				<Navbar />
 				<div className="search">
 					<div className="section booking-results">
                 		<div className="card child">

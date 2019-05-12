@@ -1,0 +1,120 @@
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif
+}
+
+.navbar-container {
+    margin-top: 50px
+}
+
+.navbar-header {
+    margin-bottom: 60px
+}
+
+#navbar ul {
+    margin: 0;
+    padding: 10px 0;
+    background: #fff;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0.3);
+    width: 100%;
+    justify-content: space-around;
+}
+
+#navbar ul li .icon {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    overflow: hidden;
+    margin: 0 auto 10px;
+}
+
+#navbar ul li .icon .fas {
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    font-size: 30px;
+    transition: 0.5s;
+    color: #000
+}
+
+#navbar ul li .icon .fas:hover {
+    color: #e91e63
+}
+
+#navbar ul li .name {
+    position: relative;
+    height: 30px;
+    width: 100%;
+}
+
+#navbar ul li .name span {
+    position: relative;
+    color: #000;
+    font-size: 18px;
+    line-height: 20px
+}
+
+#navbar ul li .name span input {
+    background: #fff
+}
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+/*     .navbar-container {
+        display: flex;
+        align-content: flex-end;
+        justify-content: center;
+    } */
+    #navbar ul {
+        margin: 0;
+        padding: 10px 0;
+        background: #fff;
+        display: flex;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0.3);
+        width: 100%;
+        justify-content: space-around;
+    
+    }
+} 
+
+/* Mobile */
+@media screen and (max-width: 750px) and (min-width: 550px) {
+    #navbar ul {
+        margin: 0;
+        padding: 10px 0;
+        background: #fff;
+        display: flex;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0.3);
+        width: 100%;
+        justify-content: space-around;
+    
+    }
+} 
+
+/* Mobile */
+@media screen and (max-width: 550px) and (min-width: 150px) {
+    #navbar ul {
+        margin: 0;
+        padding: 10px 0;
+        background: #fff;
+        display: flex;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0.3);
+        width: 100%;
+        justify-content: space-around;
+    
+    }
+} 
+
+
+

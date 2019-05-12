@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import {Link} from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 
+import Navbar from "../components/Navbar";
+
 import 'bulma/css/bulma.css';
 import '../App.css';
-import '../Search.css';
 import '../Trips.css';
 
 import travel from '../lib/travel';
@@ -32,49 +33,44 @@ class Trips extends Component {
 
   render() {
     return (
-      <div className="trips">
-        <div className="trips-container">
-					<div className="table-container">
-						<div className="table-wrap">
-							<div className="table">
-								<div className="table-wrap-nextcols">
-									<div>
-										<table>
-										<thead>
-											<tr>
-												<th className="column2">Trip</th>
-												<th className="column2">Outbound Date</th>
-												<th className="column2">Inbound Date</th>
-											</tr>
-										</thead>
-										<tbody>
-											{this.state.trips.map(trip =>
-											<tr>
-												<td>
-													<Link to={`/mytrips/${trip._id}`} className="trip-link">
-													{trip.outboundFlight.from} - {trip.outboundFlight.to}
-													</Link>
-												</td>
-												<td>
-													<span>{moment(trip.departureDate).format('DD-MM-YYYY')}</span>
-												</td>
-												<td>
-												{trip.inboundFlight ? 
-													<span>{moment(trip.returnDate).format('DD-MM-YYYY')}</span> :
-													<span></span>
-												}
-												</td>
-											</tr>
-											)}
-										</tbody>
-										</table>
+      <div className="my-trips-container">
+				<Navbar />
+				<div className="my-trips-header">
+					<h1 className="my-trips-header-title ">My trips</h1>
+				</div>
+				<div className="my-trips-list-wrapper trip-row">
+					<div className="my-trips-list-content">
+						<div>
+							{this.state.trips.map(trip =>
+								<>
+									<div className="my-trip-item-table">
+										<div className="my-trip-item-table-row">
+											<div className="my-trip-item-table-row-base">
+													<div className="my-trip-item-table-dir">
+														<strong><Link to={`/mytrips/${trip._id}`} className="trip-link">
+															{trip.outboundFlight.from} - {trip.outboundFlight.to}
+															</Link>
+														</strong>
+													</div>
+													<div className="my-trip-item-table-date">
+														<div>{moment(trip.departureDate).format('DD-MM-YYYY')} </div>
+														{trip.inboundFlight ? 
+															<div>{moment(trip.returnDate).format('DD-MM-YYYY')}</div> :
+															<span></span>
+														}
+													</div>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
+									<div className="space-between-item">
+										<span> </span>
+									</div>
+								</>
+							)}
 						</div>
 					</div>
 				</div>
-      </div>
+			</div>
     );
   }
 }

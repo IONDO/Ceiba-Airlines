@@ -16,12 +16,12 @@
 	transform: translateY(-50%);
 }
 
-#booking {
+/* #booking {
 	font-family: 'PT Sans', sans-serif;
 	background-image: url('../img/ceiba.jpg');
 	background-size: cover;
 	background-position: center;
-}
+} */
 
 .booking-form {
 	background: rgba(0, 0, 0, 0.7);
@@ -41,7 +41,6 @@
 	border: none;
 	font-size: 16px;
 	font-weight: 400;
-	-webkit-box-shadow: none;
 	box-shadow: none;
 	border-radius: 40px;
 	padding: 0px 25px;

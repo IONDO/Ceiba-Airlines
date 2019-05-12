@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { withAuth } from "../lib/AuthProvider";
+
+import Navbar from "../components/Navbar";
+
 import 'bulma/css/bulma.css';
 import '../App.css';
+import '../Profile.css';
 
 class Profile extends Component {
 
@@ -25,31 +28,29 @@ class Profile extends Component {
     render() {
         const { fullname,username } = this.state;
         return (
-            <div className="App">
-                <h3>{this.props.user.fullname} update your profile</h3>
+            <div className="profile-container">
+            <Navbar />
+              <div className="profile-update">
+                <div className="form">
                 <form onSubmit={this.handleFormSubmit}>
-                  <label>Fullname:</label>
                     <input
                       type="text"
                       name="fullname"
                       value={fullname}
                       onChange={this.handleChange}
-                      placeholder="testing@test.com"
+                      placeholder="Fullname"
                     />
-                    <input type="submit" value="Update" />
-                    <label>Username:</label>
                     <input
                       type="text"
                       name="username"
                       value={username}
                       onChange={this.handleChange}
-                      placeholder="testing@test.com"
+                      placeholder="Username"
                     />
-                    <input type="submit" value="Update" />
+                    <button>Update</button>
                 </form>
-                <div>
-					        <Link to={"/"}>Search</Link>
-				        </div>
+              </div>  
+				      </div>
             </div>
         );
     }

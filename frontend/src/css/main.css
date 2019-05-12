@@ -527,3 +527,45 @@ iframe {
     width: 100%;
   }
 }
+
+/* Tablet */
+ @media screen and (max-width: 768px) {
+    .limiter {
+      width: 100%
+    }
+
+    .container-login100 {
+      width: 100%;
+      padding: 1px
+
+    }
+
+    .wrap-login100 {
+      width: 100%;
+      margin: 0 15px;
+    }
+
+    .input100 {
+        width: 100%
+    }
+} 
+
+/* Mobile */
+@media screen and (max-width: 415px) and (min-width: 150px) {
+  .limiter {
+    width: 100%
+  }
+
+  .container-login100 {
+      width: 100%
+  }
+
+  .wrap-login100 {
+      width: 100%;
+      margin: 0 15px;
+  }
+
+  .input100 {
+      width: 100%
+  }
+} 
