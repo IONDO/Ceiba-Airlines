@@ -24,4 +24,198 @@ body, html {
   color: #61dafb;
 }
 
+.page-container {
+  background: url("./img/vacation.jpg") no-repeat center center fixed; 
+  background-size: cover;
+  height: 100vh;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
 
+.page-container h1 {
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  left: 35%;
+  top: 5%;
+  font-size: 220px;
+  font-weight: 900;
+  margin: 0px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+
+.page-container h2 {
+  position: absolute;
+  bottom: 550px;
+  left: 380px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.link {
+  position: absolute;
+  left: 45%;
+  top: 40%;
+  border: 1px solid white;
+  border-radius: 60px;
+  color: #fff;
+  width: 5%
+}
+
+@media screen and (max-width: 1000px) {
+  .page-container h1 {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    left: 25%;
+    top: 5%;
+    font-size: 210px;
+    font-weight: 900;
+    margin: 0px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+  }
+
+  .page-container h2 {
+    position: absolute;
+    bottom: 65%;
+    left: 8%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+
+  .link {
+    position: absolute;
+    left: 45%;
+    top: 37%;
+    border: 1px solid white;
+    border-radius: 60px;
+    color: #fff;
+    width: 12%;
+  }
+} 
+
+@media screen and (min-width: 770px) and (max-width: 834px) {
+  .page-container h1 {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    left: 20%;
+    top: 5%;
+    font-size: 210px;
+    font-weight: 900;
+    margin: 0px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+  }
+
+  .page-container h2 {
+    position: absolute;
+    bottom: 65%;
+    left: 10%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+
+  .link {
+    position: absolute;
+    left: 45%;
+    top: 37%;
+    border: 1px solid white;
+    border-radius: 60px;
+    color: #fff;
+    width: 12%;
+  }
+} 
+
+@media screen and (max-width: 768px) {
+  .page-container h1 {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    left: 31%;
+    top: 5%;
+    font-size: 120px;
+    font-weight: 600;
+    margin: 0px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+  }
+
+  .page-container h2 {
+    position: absolute;
+    bottom: 67%;
+    left: 10%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+
+  .link {
+    position: absolute;
+    left: 45%;
+    top: 35%;
+    border: 1px solid white;
+    border-radius: 60px;
+    color: #fff;
+    width: 12%;
+  }
+} 
+
+
+@media screen and (max-width: 550px) and (min-width: 150px) {
+  .page-container h1 {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    left: 17%;
+    top: 5%;
+    font-size: 100px;
+    font-weight: 570;
+    margin: 0px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+  }
+
+  .page-container h2 {
+    position: absolute;
+    bottom: 60%;
+    left: 10%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    margin-right: 20px;
+  }
+
+  .link {
+    position: absolute;
+    left: 37%;
+    top: 41%;
+    border: 1px solid white;
+    border-radius: 60px;
+    color: #fff;
+    width: 20%;
+  }
+} 

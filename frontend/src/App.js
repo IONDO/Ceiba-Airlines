@@ -14,6 +14,7 @@ import Search from "./pages/Search"
 import Profile from "./pages/Profile"
 import Trip from "./pages/Trip"
 import Trips from "./pages/Trips"
+import NoMatch from "./pages/NoMatch"
 
 import './App.css';
 
@@ -31,6 +32,7 @@ class App extends Component {
             <PrivateRoute path="/mytrips/:tripId" component={Trip} />
             <PrivateRoute path="/mytrips" component={Trips} />
             <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute component={NoMatch} />
             <PrivateRoute path="/private" component={Private} />
           </Switch>
         </div>
