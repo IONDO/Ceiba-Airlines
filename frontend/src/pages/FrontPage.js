@@ -182,7 +182,7 @@ class FrontPage extends Component {
                                         <DatePicker className="form-control"
                                             selected={this.state.returnDate}
                                             onChange={this.handleReturnChange}
-                                            minDate={new Date()}
+                                            minDate={this.state.departureDate}
                                             dateFormat="dd/mm/yyyy"
                                             placeholderText="dd/mm/yyyy"
                                         />

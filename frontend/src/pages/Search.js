@@ -287,9 +287,6 @@ class Search extends Component {
 						</div> : <span></span>
 					}
 				</div>
-				<div>
-					<Link to={"/"}>Back</Link>
-				</div>
             </div>
         )
     }
