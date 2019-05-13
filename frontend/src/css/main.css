@@ -528,8 +528,7 @@ iframe {
   }
 }
 
-/* Tablet */
- @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .limiter {
       width: 100%
     }
@@ -550,7 +549,6 @@ iframe {
     }
 } 
 
-/* Mobile */
 @media screen and (max-width: 415px) and (min-width: 150px) {
   .limiter {
     width: 100%

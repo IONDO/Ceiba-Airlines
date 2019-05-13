@@ -231,7 +231,7 @@ class FrontPage extends Component {
                 </div>
            </div>
            <div className="fixed-top-navbar">
-            <Navbar />
+                <Navbar />
            </div>
            </div>
         </div>

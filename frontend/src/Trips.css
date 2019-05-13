@@ -5,7 +5,7 @@ body, html {
 }
 
 .my-trips-container {
-    background: url("./img/background.jpg") no-repeat center center fixed; 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url("./img/background.jpg") no-repeat center center fixed; 
     background-size: cover;
     height: 100vh;
     display: flex;
@@ -14,7 +14,7 @@ body, html {
 }
 
 .my-trips-header {
-    margin-top: 30px;
+    margin-top: 280px;
     margin-bottom: 15px;
     display: inline-block;
     width: 100%;
@@ -79,9 +79,7 @@ body, html {
 .my-trip-item-table-dir {
     -ms-flex-positive: 1;
     flex-grow: 1;
-    -ms-flex-pack: center;
     justify-content: center;
-    -ms-flex-item-align: center;
     padding-right: 24px;
 }
 
@@ -95,62 +93,47 @@ body, html {
     margin: 10px
 }
 
-/* @media all and (min-width:241px) and (max-width:480px) {
-    #toast-container>div {
-     padding:8px 8px 8px 50px;
-     width:18em
-    }
+.fixed-top-navbar {
+    position: fixed;
+    top: 20px;
+    left: 0px;
+    width: 100%;
 }
 
-@media all and (min-width:481px) and (max-width:768px) {
-    #toast-container>div {
-     padding:15px 15px 15px 50px;
-     width:25em
+@media screen and (max-width: 750px) and (min-width: 550px) {
+    .my-trips-list-wrapper {
+        padding: 16px 0;
+        position: relative;
+        width: 80%
+    
     }
-}
 
-@media screen {
-    #print-section {
-     display:none
+    .my-trip-item-table-date {
+        width: 160px;
+        justify-content: center;
+        align-self: center;
     }
-}
+} 
 
-@media screen and (-ms-high-contrast:active),(-ms-high-contrast:none) {
-    use {
-     pointer-events:none
+/* Mobile */
+@media screen and (max-width: 550px) and (min-width: 150px) {
+    .my-trips-list-wrapper {
+        padding: 16px 0;
+        position: relative;
+        width: 100%
+    
     }
-}
 
-@media screen and (min-width:0\0) {
-    core-datepicker .arrows {
-     height:0
+    .my-trip-item-table-dir {
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        justify-content: center;
     }
-}
 
-@media only screen and (max-width:37.5em) {
-    core-list-dropdown .content .btn,
-    core-list-dropdown .content .label {
-     display:block
+    .my-trip-item-table-date {
+        width: 160px;
+        justify-content: center;
+        align-self: center;
     }
-}
 
-@media screen and (device-aspect-ratio:40/71) {
-    [core-adaptive-panel] .content-box>.content {
-     height:calc(100vh - 116px);
-     -webkit-overflow-scrolling:touch
-    }
-}
-
-@media (max-device-width:767px) and (orientation:landscape) {
-    .nc-prompt--active::after {
-     right:-2.7%
-    }
-}
-
-@media tablet {
-    .nc-prompt--active::after {
-     display:none
-    }
-}
-
- */
+} 

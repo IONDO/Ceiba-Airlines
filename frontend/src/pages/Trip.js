@@ -32,7 +32,6 @@ class Trip extends Component {
 	renderFlight(title, flight) {
 		return <>
 			<div className="search-container trip">
-				<Navbar />
 				<div className="search">
 					<div className="section booking-results">
 						<div className="card child">
@@ -77,6 +76,9 @@ class Trip extends Component {
 						</div>
 					</div>	
 				</div>
+				<div className="fixed-top-navbar">
+          <Navbar />
+        </div>
 			</div>
 		</>;
 	}

@@ -34,7 +34,6 @@ class Trips extends Component {
   render() {
     return (
       <div className="my-trips-container">
-				<Navbar />
 				<div className="my-trips-header">
 					<h1 className="my-trips-header-title ">My trips</h1>
 				</div>
@@ -70,6 +69,9 @@ class Trips extends Component {
 						</div>
 					</div>
 				</div>
+				<div className="fixed-top-navbar">
+          <Navbar />
+        </div>
 			</div>
     );
   }
