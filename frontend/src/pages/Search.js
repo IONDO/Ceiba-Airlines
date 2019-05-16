@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 
 import Navbar from "../components/Navbar";
 
 import 'bulma/css/bulma.css';
-import '../App.css';
-import '../Search.css';
+import '../css/App.css';
+import '../css/Search.css';
 import travel from '../lib/travel';
 
 class Search extends Component {
@@ -49,7 +48,8 @@ class Search extends Component {
 		const outbound = this.state.selectedOutbound._id;
 		const inbound = this.state.selectedInbound ? this.state.selectedInbound._id : undefined;
 		const departureDate = this.params.depart;
-		const returnDate= this.params["return"]
+		const returnDate= this.params["return"];
+
 		this.setState({ saving: true }, () => 
 			travel
 				.createTrip(outbound, departureDate, inbound, returnDate)
@@ -60,6 +60,7 @@ class Search extends Component {
     }
 
     render () {
+		console.log()
         return (
             <div className="search-container">
 				<Navbar />
@@ -272,15 +273,15 @@ class Search extends Component {
 										</span>
 									</h3>		
 									{this.state.selectedOutbound ?
-											<>
-												<input className="btn-select-flight" 
-													type="button" 
-													value="Save"
-													onClick={() => this.save()}
-													disabled={this.state.saving}
-												/>
-											</> : 
-											<span></span>
+										<>
+											<input className="btn-select-flight" 
+												type="button" 
+												value="Save"
+												onClick={() => this.save()}
+												disabled={this.state.saving}
+											/>
+										</> : 
+										<span></span>
 									}
 								</div> 
 							</div>

@@ -58,8 +58,8 @@ class Login extends Component {
                   Login
                 </button> 
               </div>
-              <div class="w-full text-center p-t-55">
-                <span class="txt2">
+              <div className="w-full text-center p-t-55">
+                <span className="txt2">
                   Don't have an account yet?
                 </span>
                 <Link to="/signup"> Signup</Link>

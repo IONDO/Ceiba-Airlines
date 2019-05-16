@@ -5,7 +5,7 @@ body, html {
 
 .profile-container {
     padding: 10px;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("./img/ceiba-airplane.jpg") no-repeat center center fixed; 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../img/ceiba-airplane.jpg") no-repeat center center fixed; 
     background-size: cover;
     height: 100vh;
 }

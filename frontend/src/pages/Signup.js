@@ -7,15 +7,14 @@ import '../css/util.css'
 
 class Signup extends Component {
   state = {
-    fullname: "",
     username: "",
     password: ""
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { fullname, username, password } = this.state;
-    this.props.signup({ fullname,username, password });
+    const {  username, password } = this.state;
+    this.props.signup({ username, password });
   };
 
   handleChange = event => {
@@ -24,7 +23,7 @@ class Signup extends Component {
   };
 
   render() {
-    const { fullname,username, password } = this.state;
+    const { username, password } = this.state;
     return (
       <div className="limiter">
 		    <div className="container-login100">
@@ -34,7 +33,7 @@ class Signup extends Component {
 					    <span className="login100-form-title p-b-59">
 					    	Sign Up
 					    </span>
-					    <div className="wrap-input100 validate-input" data-validate="Name is required">
+					  {/*   <div className="wrap-input100 validate-input" data-validate="Name is required">
                 <input className="input100"
                 type="text"
                 name="fullname"
@@ -43,7 +42,7 @@ class Signup extends Component {
                 placeholder="Full Name..."
               />
 					    	<span className="focus-input100"></span>
-					    </div>
+					    </div> */}
 					    <div className="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                 <input className="input100"
                 type="text"
@@ -69,8 +68,8 @@ class Signup extends Component {
                 Signup
                 </button> 
               </div>
-              <div class="w-full text-center p-t-55">
-                    <span class="txt2">
+              <div className="w-full text-center p-t-55">
+                    <span className="txt2">
                     Already have account?
                     </span>
                     <Link to={"/login"}> Login</Link>

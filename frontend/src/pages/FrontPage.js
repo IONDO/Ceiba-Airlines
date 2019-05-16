@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 
 import "react-datepicker/dist/react-datepicker.css";
 import 'bulma/css/bulma.css';
-import '../FrontPage.css';
+import '../css/FrontPage.css';
 import '../css/style.css'
 
 import { withAuth } from "../lib/AuthProvider";

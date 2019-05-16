@@ -5,8 +5,8 @@ import { withAuth } from "../lib/AuthProvider";
 import Navbar from "../components/Navbar";
 
 import 'bulma/css/bulma.css';
-import '../App.css';
-import '../Trips.css';
+import '../css/App.css';
+import '../css/Trips.css';
 
 import travel from '../lib/travel';
 import moment from "moment"

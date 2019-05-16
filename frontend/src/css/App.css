@@ -25,7 +25,7 @@ body, html {
 }
 
 .page-container {
-  background: url("./img/vacation.jpg") no-repeat center center fixed; 
+  background: url("../img/vacation.jpg") no-repeat center center fixed; 
   background-size: cover;
   height: 100vh;
   overflow: scroll;
@@ -69,6 +69,18 @@ body, html {
   color: #fff;
   width: 5%
 }
+
+.internal-server-container {
+  background: url("../img/error-500.jpg") no-repeat center center fixed; 
+  background-size: cover;
+  height: 100vh;
+  overflow: scroll;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center */
+}
+
 
 @media screen and (max-width: 1000px) {
   .page-container h1 {

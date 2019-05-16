@@ -5,7 +5,7 @@ body, html {
 }
 
 .my-trips-container {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url("./img/background.jpg") no-repeat center center fixed; 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url("../img/background.jpg") no-repeat center center fixed; 
     background-size: cover;
     height: 100vh;
     display: flex;

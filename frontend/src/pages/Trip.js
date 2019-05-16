@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { withAuth } from "../lib/AuthProvider";
 
 import Navbar from "../components/Navbar";
 
 import 'bulma/css/bulma.css';
-import '../App.css';
-import '../Search.css';
+import '../css/App.css';
+import '../css/Search.css';
 
 import travel from '../lib/travel';
 
@@ -13,16 +13,22 @@ import travel from '../lib/travel';
 class Trip extends Component {
 	constructor(props) {
     super(props)
-    console.log(props)
 		this.tripId = props.match.params.tripId;
 		this.state = {
-      trip: undefined,
+			trip: undefined,
+			isLoading: true,
 		}
 	}
 
   componentDidMount() {
     travel.trip(this.tripId)
-        .then(trip => this.setState({ trip }))
+        .then(trip => {
+					console.log("tripi", trip)
+					this.setState({ 
+						trip,
+						isLoading: false
+					 }
+				)})
         .catch(error => {
             console.log("error", error);
             this.setState({ status: "error" });
@@ -30,7 +36,7 @@ class Trip extends Component {
 	}
 	
 	renderFlight(title, flight) {
-		return <>
+		return <div>
 			<div className="search-container trip">
 				<div className="search">
 					<div className="section booking-results">
@@ -80,18 +86,19 @@ class Trip extends Component {
           <Navbar />
         </div>
 			</div>
-		</>;
+		</div>;
 	}
 
   render() {
-		console.log(this.state.trip);
     return (
       <div>
-				
-				{this.state.trip ? 
-					[this.renderFlight("Outbound",this.state.trip.outboundFlight), 
-					 (this.state.trip.inboundFlight) ? this.renderFlight("Inbound",this.state.trip.inboundFlight) : null]
-					: <span></span>}
+				{this.state.isLoading 
+					? (<div>loading</div>)
+					: (<div>
+							{this.state.trip.outboundFlight && this.renderFlight("Outbound",this.state.trip.outboundFlight)}
+							{this.state.trip.inboundFlight && this.renderFlight("Inbound",this.state.trip.inboundFlight)}
+						</div>
+					)}
       </div>
     );
   }
