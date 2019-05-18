@@ -33,7 +33,8 @@ class Search extends Component {
             .catch(error => {
                 console.log("error", error);
                 this.setState({ status: "error" });
-            });
+			});
+		/* window.addEventListener('scroll', this.handleScroll); */
 	}
 
 	handleSelectOutbound(selectedOutbound) {
@@ -43,6 +44,20 @@ class Search extends Component {
 	handleSelectInbound(selectedInbound) {
 		this.setState({ selectedInbound });
 	}
+
+	handleScrollOutbound() {
+		let item = document.getElementById("outbound");
+		console.log(item);
+		item.scrollIntoView({block: "start", behavior: "smooth"});
+	}
+
+	handleScrollInbound () {
+		let item = document.getElementById("inbound");
+		console.log(item);
+		item.scrollIntoView({block: "start", behavior: "instant"});
+	}
+	   
+
 
 	save() {
 		const outbound = this.state.selectedOutbound._id;
@@ -117,11 +132,11 @@ class Search extends Component {
 																<div className="price-price">
 																	<span>{outbound.price} CFAs</span>
 																</div>
-																<div>
+																<div id="outbound">
 																	<input className="btn-select-flight"
 																		type="button"
 																		value="Select"
-																		onClick={() => this.handleSelectOutbound(outbound)}
+																		onClick={() => {this.handleSelectOutbound(outbound); this.handleScrollOutbound()}}
 																	/> 
 																</div>
 															</div>
@@ -185,11 +200,11 @@ class Search extends Component {
 																<div className="price-price">
 																	<span>{inbound.price} CFAs</span>
 																</div>
-																<div>
+																<div id="inbound">
 																	<input className="btn-select-flight"
 																		type="button"
 																		value="Select"
-																		onClick={() => this.handleSelectInbound(inbound)}
+																		onClick={() => {this.handleSelectInbound(inbound); this.handleScrollInbound()}}
 																	/> 
 																</div>
 															</div>
