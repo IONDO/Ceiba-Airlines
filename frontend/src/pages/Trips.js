@@ -35,7 +35,6 @@ class Trips extends Component {
     return (
       <div className="my-trips-container">
 				<div className="my-trips-header">
-					<h1 className="my-trips-header-title ">My trips</h1>
 				</div>
 				<div className="my-trips-list-wrapper trip-row">
 					<div className="my-trips-list-content">

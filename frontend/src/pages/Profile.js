@@ -27,7 +27,9 @@ class Profile extends Component {
         const { username } = this.state;
         return (
             <div className="profile-container">
+            <div className="fixed-top-navbar">
             <Navbar />
+            </div>
               <div className="profile-update">
                 <div className="form">
                 <form onSubmit={this.handleFormSubmit}>
