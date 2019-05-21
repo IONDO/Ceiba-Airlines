@@ -85,12 +85,9 @@ class Search extends Component {
 								{(this.state.outboundFlights.length > 0)
 									? this.state.outboundFlights.map(outbound =>
 									<li key={outbound._id}> 
-											<div className="card-header flight-list-header">
+											<div className="header flight-list-header">
 												<div className="details">
 													<div className="destination">
-														<div className="icon">
-															<img src="../img/plane-taking-off.png" alt=""/>
-														</div>
 														<span>{outbound.from} - {outbound.to}</span>
 													</div>
 												</div>
@@ -153,12 +150,9 @@ class Search extends Component {
 								{(this.state.inboundFlights.length > 0)
 									? this.state.inboundFlights.map(inbound =>
 									<li key={inbound._id}> 
-											<div className="card-header flight-list-header">
+											<div className="header flight-list-header">
 												<div className="details">
 													<div className="destination">
-														<div className="icon">
-															<img src="../img/plane-taking-off.png" alt=""/>
-														</div>
 														<span>{inbound.from} - {inbound.to}</span>
 													</div>
 												</div>
