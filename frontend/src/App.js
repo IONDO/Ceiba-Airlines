@@ -16,7 +16,6 @@ import Trip from "./pages/Trip";
 import Trips from "./pages/Trips";
 import NoMatch from "./pages/NoMatch";
 import InternalServerError from "./pages/InternalServerError";
-import Checkout from "./pages/Checkout";
 
 import './css/App.css';
 
@@ -34,7 +33,6 @@ class App extends Component {
             <PrivateRoute path="/mytrips/:tripId" component={Trip} />
             <PrivateRoute path="/mytrips" component={Trips} />
             <PrivateRoute path="/profile" component={Profile} />
-            <PrivateRoute path="/checkout" component={Checkout} />
             <PrivateRoute path="/private" component={Private} />
             <PrivateRoute path="/500" component={InternalServerError} />
             <PrivateRoute component={NoMatch} />

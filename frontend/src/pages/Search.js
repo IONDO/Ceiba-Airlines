@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 
 import Navbar from "../components/Navbar";
+import Payment from "./Payment"
 
 import 'bulma/css/bulma.css';
 import '../css/App.css';
@@ -25,16 +26,13 @@ class Search extends Component {
 		travel.search(this.params.from, this.params.to, this.params.depart)
 			.then(outboundFlights => this.setState({ outboundFlights }))
 			.catch(error => {
-				console.log("error", error);
 				this.setState({ status: "error" });
 			});
 		travel.search(this.params.to, this.params.from, this.params["return"])
             .then(inboundFlights => this.setState({ inboundFlights }))
             .catch(error => {
-                console.log("error", error);
                 this.setState({ status: "error" });
 			});
-		/* window.addEventListener('scroll', this.handleScroll); */
 	}
 
 	handleSelectOutbound(selectedOutbound) {
@@ -47,13 +45,11 @@ class Search extends Component {
 
 	handleScrollOutbound() {
 		let item = document.getElementById("outbound");
-		console.log(item);
 		item.scrollIntoView({block: "start", behavior: "smooth"});
 	}
 
 	handleScrollInbound () {
 		let item = document.getElementById("inbound");
-		console.log(item);
 		item.scrollIntoView({block: "start", behavior: "instant"});
 	}
 	   
@@ -75,7 +71,10 @@ class Search extends Component {
     }
 
     render () {
-		console.log()
+		const price = 
+			(this.state.selectedInbound ?  this.state.selectedInbound.price : 0) +
+			(this.state.selectedOutbound ? this.state.selectedOutbound.price : 0);
+		
         return (
             <div className="search-container">
 				<Navbar />
@@ -277,26 +276,14 @@ class Search extends Component {
 								</div>
 								<div className="selection-summary-footer">
 									<h3 className="selection-summary-total">
-										Total
-										:
+										Total:
 										<span className="selection-summary-price-total">
-										{this.state.selectedInbound ?
-											<>
-											{this.state.selectedOutbound.price + this.state.selectedInbound.price} CFAs
-											</> : <span>{this.state.selectedOutbound.price} CFAs</span>
-										} 
+											<span>{price} CFAs</span>
 										</span>
 									</h3>		
-									{this.state.selectedOutbound ?
-										<>
-											<input className="btn-select-flight" 
-												type="button" 
-												value="Save"
-												onClick={() => this.save()}
-												disabled={this.state.saving}
-											/>
-										</> : 
-										<span></span>
+									{this.state.selectedOutbound 
+										? <Payment onBought={() => this.save()} amount={price} />
+									 	: <span></span>
 									}
 								</div> 
 							</div>
@@ -306,7 +293,6 @@ class Search extends Component {
             </div>
         )
     }
-
 }
 
 export default Search;

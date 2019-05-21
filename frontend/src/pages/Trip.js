@@ -23,14 +23,12 @@ class Trip extends Component {
   componentDidMount() {
     travel.trip(this.tripId)
         .then(trip => {
-					console.log("tripi", trip)
 					this.setState({ 
 						trip,
 						isLoading: false
 					 }
 				)})
         .catch(error => {
-            console.log("error", error);
             this.setState({ status: "error" });
         });
 	}

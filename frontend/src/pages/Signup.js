@@ -33,16 +33,6 @@ class Signup extends Component {
 					    <span className="login100-form-title p-b-59">
 					    	Sign Up
 					    </span>
-					  {/*   <div className="wrap-input100 validate-input" data-validate="Name is required">
-                <input className="input100"
-                type="text"
-                name="fullname"
-                value={fullname}
-                onChange={this.handleChange}
-                placeholder="Full Name..."
-              />
-					    	<span className="focus-input100"></span>
-					    </div> */}
 					    <div className="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                 <input className="input100"
                 type="text"

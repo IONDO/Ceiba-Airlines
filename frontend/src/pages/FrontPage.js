@@ -29,7 +29,6 @@ class FrontPage extends Component {
         travel.routes()
             .then(routes => this.setState({ routes }))
             .catch(error => {
-                console.log("error", error);
                 this.setState({ status: "error" });
             });
     }
@@ -121,23 +120,10 @@ class FrontPage extends Component {
     return (
         <div className="frontpage">
             <div className="frontpage-container">
-            <h1 className="user-message">Welcome {user.fullname}</h1>
             <div className="section-center">
             <div className="container">
                 <div className="frontpage-search-box">
                     <div className="booking-form">
-                        <div className="form-group">
-								<div className="form-checkbox">
-									<label id="roundtrip">
-										<input type="radio" id="roundtrip" name="flight-type"/>
-										<span></span>Roundtrip
-									</label>
-									<label id="one-way">
-										<input type="radio" id="one-way" name="flight-type"/>
-										<span></span>One way
-									</label>
-								</div>
-						</div>
                         <div className="row">
 								<div className="col-md-6">
 									<div className="form-group">
@@ -163,11 +149,11 @@ class FrontPage extends Component {
 									</div>
 								</div>
 						</div>
-                        <div className="row">
-								<div className="col-md-3">
+                        <div className="row dates">
+								<div className=" dates-content">
 									<div className="form-group">
 										<span className="form-label">Departing</span>
-                                        <DatePicker className="form-control" 
+                                        <DatePicker className="form-control dates-text" 
                                             selected={this.state.departureDate}
                                             onChange={this.handleDepartureChange}
                                             minDate={new Date()}
@@ -176,38 +162,16 @@ class FrontPage extends Component {
                                         />
 									</div>
 								</div>
-								<div className="col-md-3">
+								<div className=" dates-content">
 									<div className="form-group">
 										<span className="form-label">Returning</span>
-                                        <DatePicker className="form-control"
+                                        <DatePicker className="form-control dates-text"
                                             selected={this.state.returnDate}
                                             onChange={this.handleReturnChange}
                                             minDate={this.state.departureDate}
                                             dateFormat="dd/mm/yyyy"
                                             placeholderText="dd/mm/yyyy"
                                         />
-									</div>
-								</div>
-								<div className="col-md-2">
-									<div className="form-group">
-										<span className="form-label">Adults (18+)</span>
-										<select className="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-										</select>
-										<span className="select-arrow"></span>
-									</div>
-								</div>
-								<div className="col-md-2">
-									<div className="form-group">
-										<span className="form-label">Children (0-17)</span>
-										<select className="form-control">
-											<option>0</option>
-											<option>1</option>
-											<option>2</option>
-										</select>
-										<span className="select-arrow"></span>
 									</div>
 								</div>
 							</div>

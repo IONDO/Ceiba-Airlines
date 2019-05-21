@@ -20,13 +20,26 @@
     width: 100%;
 }
 
+.dates {
+    display: flex;
+    justify-content: space-around
+}
+
+.dates-content {
+    flex: 0 0 30%;
+}
+
+.dates-text {
+    text-align: center;
+}
+
 .user-message {
     margin-bottom: 130px;
     margin-top: 20px;
 }
 
 .section-center {
-    margin-top: 120px;
+    margin-top: 240px;
 }
 
 .frontpage-search-box {
@@ -60,12 +73,17 @@
 
 @media screen and (max-width: 750px) and (min-width: 550px) {
     .section-center {
-        margin-top: 100px;
+        margin-top: 200px;
     }
 } 
 
 @media screen and (max-width: 550px) and (min-width: 150px) {
     .section-center {
-        margin-top: 80px;
+        margin-top: 180px;
+    }
+
+    .dates {
+        display: flex;
+        flex-direction: column;
     }
 } 

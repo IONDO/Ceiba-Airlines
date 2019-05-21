@@ -25,6 +25,9 @@ class Login extends Component {
 
   render() {
     const { username, password } = this.state;
+    const enabled =
+      username.length > 0 &&
+      password.length > 0;
     return (
       <div className="limiter">
         <div className="container-login100">
@@ -39,7 +42,7 @@ class Login extends Component {
                   name="username"
                   value={username}
                   onChange={this.handleChange}
-                  placeholder="johndoe@test.com"
+                  placeholder="username"
                 />
                 <span className="focus-input100"></span>
               </div>
@@ -54,7 +57,8 @@ class Login extends Component {
                 <span className="focus-input100"></span>
               </div>
               <div className="container-login100-form-btn m-t-17">
-                <button className="login100-form-btn">
+                <button className="login100-form-btn"
+                disabled={!enabled}>
                   Login
                 </button> 
               </div>

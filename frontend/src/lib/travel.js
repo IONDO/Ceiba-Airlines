@@ -25,15 +25,16 @@ class Travel {
   }
 
   search(from, to, depart) {
-    return this.client.get("/api/flights/search", {
-      params: {
-        from,
-        to,
-        depart
-      }
-    }).then(({
-      data
-    }) => data.flights);
+    return this.client
+      .get("/api/flights/search", {
+        params: {
+          from,
+          to,
+          depart
+        }
+      }).then(({
+        data
+      }) => data.flights);
   }
 
   createTrip(outboundFlight, departureDate, inboundFlight, returnDate) {
@@ -52,7 +53,7 @@ class Travel {
 
   trips() {
     return this.client
-      .get(`/api/trips/`)
+      .get("/api/trips/")
       .then(({
         data
       }) => data.trips);
@@ -66,6 +67,7 @@ class Travel {
       }) => data);
   }
 }
+
 
 const travel = new Travel();
 

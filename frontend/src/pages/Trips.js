@@ -26,7 +26,6 @@ class Trips extends Component {
 				this.setState({ trips })
 			})
 			.catch(error => {
-				console.log("error", error);
 					this.setState({ status: "error" });
 			});
 	}
